@@ -1,0 +1,4 @@
+set scroll-step 100
+
+set selection-clipboard clipboard
+set default-bg "#00000000"
