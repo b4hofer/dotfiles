@@ -2,7 +2,7 @@ Config {
 
    -- appearance
      font =         "xft:JetBrains Mono:size=10:regular:antialias=true:hinting=true"
-   , additionalFonts = [ "xft:Font Awesome 5 Free Solid:size=10" ]
+   , additionalFonts = [ "xft:Font Awesome 5 Free Solid:size=10", "xft:Font Awesome 5 Brands:size=10" ]
    , bgColor =      "#2E3440"
    , fgColor =      "#E4E4E4"
 -- Right now, position is determined by autobar script using command line argument
@@ -15,7 +15,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "}{ %wlan0wi%%default:Master%%coretemp%%battery%%date%"
+   , template = "}{ %default:Master%%music%%date%"
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -40,35 +40,9 @@ Config {
    --   color can be set by enclosing in <fc></fc> tags. For more details
    --   see http://projects.haskell.org/xmobar/#system-monitor-plugins.
    , commands = [
-        -- wireless network name and link quality
-        Run Wireless "wlan0" [ "--template" , "<fc=#2E3440,#5E81AC:0> <fn=1></fn> <essid> (<quality>%) </fc>" ] 50
-        -- cpu core temperature monitor
-        , Run CoreTemp       [ "--template" , "<fc=#2E3440,#5E81AC:0>  <fn=1></fn> <core0>°C </fc>"
-                             , "--Low"      , "60"        -- units: °C
-                             , "--High"     , "70"        -- units: °C
-                             --, "--low"      , "#2E3440,#BF616A:0"
-                             --, "--normal"   , "#2E3440,#5E81AC"
-                             --, "--high"     , "#BF616A,#5E81AC"
-                             ] 50
-                          
-        -- battery monitor
-        , Run Battery        [ "--template" , "<acstatus>"
-                             , "--Low"      , "10"        -- units: %
-                             , "--High"     , "80"        -- units: %
-                             --, "--low"      , "#BF616A,#5E81AC:0"
-                             --, "--normal"   , "darkorange"
-                             --, "--high"     , "darkgreen"
-
-                             , "--" -- battery specific options
-                                       -- discharging status
-                                       , "-o"   , "<fc=#2E3440,#5E81AC:0> <fn=1></fn> <left>% (<timeleft>) </fc>"
-                                       -- AC "on" status
-                                       , "-O"   , "<fc=#2E3440,#8fbcbb:0> <fn=1></fn> <left>% </fc>"
-                                       -- charged status
-                                       , "-i"   , "<fc=#2E3440,#a3be8c:0> <fn=1></fn> 100% </fc>"
-                             ] 50
-        -- volume
-        , Run Volume "default" "Master" [ "--template" , "<status>"
+        Run Com "/bin/sh" ["-c","~/.config/scripts/spotify.sh"] "music" 10,
+        -- Run CoreTemp [ "-t", "<core0>C" ] 10,
+        Run Volume "default" "Master" [ "--template" , "<status>"
                                         , "--"
                                         , "--on", " <fn=1></fn> <volume>% "
                                         , "--off", " <fn=1></fn> "
