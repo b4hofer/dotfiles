@@ -14,6 +14,7 @@ import XMonad.Layout.Cross
 import XMonad.Layout.Spacing
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Reflect
+import XMonad.Layout.NoBorders
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 import XMonad.Hooks.DynamicBars
@@ -67,7 +68,7 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#4C566A"
+myNormalBorderColor  = "#030405"
 myFocusedBorderColor = "#ECEFF4"
 
 ------------------------------------------------------------------------
@@ -216,7 +217,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 --
 mySpacing i = spacingRaw True (Border i i i i) True (Border i i i i) True
 
-myLayout = avoidStruts $ (tiled ||| mirrorTiled ||| threecol ||| Full)
+myLayout = avoidStruts $ (smartBorders tiled ||| smartBorders mirrorTiled ||| smartBorders threecol ||| noBorders Full)
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = mySpacing 15 $ Tall nmaster delta ratio
