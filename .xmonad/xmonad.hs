@@ -12,6 +12,8 @@ import XMonad.Actions.PhysicalScreens
 import XMonad.Layout.CenteredMaster
 import XMonad.Layout.Spacing
 import XMonad.Layout.ThreeColumns
+import XMonad.Layout.NoBorders
+import XMonad.Layout.Reflect
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 import XMonad.Hooks.DynamicBars
@@ -43,7 +45,7 @@ myClickJustFocuses = False
 
 -- Width of the window border in pixels.
 --
-myBorderWidth   = 1
+myBorderWidth   = 2
 
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -65,8 +67,8 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#5e81ac"
-myFocusedBorderColor = "#ebcb8b"
+myNormalBorderColor  = "#030405"
+myFocusedBorderColor = "#ECEFF4"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -214,10 +216,12 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 --
 mySpacing i = spacingRaw True (Border i i i i) True (Border i i i i) True
 
-myLayout = avoidStruts $ (tiled ||| Mirror tiled ||| threecol ||| Full)
+myLayout = avoidStruts $ (smartBorders tiled ||| smartBorders mirrorTiled ||| smartBorders threecol ||| noBorders Full)
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = mySpacing 15 $ Tall nmaster delta ratio
+
+     mirrorTiled = reflectHoriz tiled
 
      threecol = mySpacing 15 $ ThreeColMid nmaster delta (3/7)
 
