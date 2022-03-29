@@ -57,8 +57,8 @@ colors:
     cyan: '#6d96a5'
     white: '#aeb3bb'
 
-background_opacity: 1
 window:
+  opacity: 0.9
   padding:
     x: 30
     y: 30
@@ -66,6 +66,6 @@ font:
   normal:
     family: Roboto Mono for Powerline
     style: Regular
-  size: 10
+  size: 11
 live_config_reload: true
 dynamic_padding: true

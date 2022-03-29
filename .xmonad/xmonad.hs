@@ -12,6 +12,8 @@ import XMonad.Actions.PhysicalScreens
 import XMonad.Layout.CenteredMaster
 import XMonad.Layout.Spacing
 import XMonad.Layout.ThreeColumns
+import XMonad.Layout.NoBorders
+import XMonad.Layout.Reflect
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 import XMonad.Hooks.DynamicBars
@@ -65,8 +67,8 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#5e81ac"
-myFocusedBorderColor = "#ebcb8b"
+myNormalBorderColor  = "#030405"
+myFocusedBorderColor = "#ECEFF4"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -214,12 +216,14 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 --
 mySpacing i = spacingRaw True (Border i i i i) True (Border i i i i) True
 
-myLayout = avoidStruts $ (tiled ||| Mirror tiled ||| threecol ||| Full)
+myLayout = avoidStruts $ (smartBorders tiled ||| smartBorders mirrorTiled ||| smartBorders threecol ||| noBorders Full)
   where
      -- default tiling algorithm partitions the screen into two panes
-     tiled   = mySpacing 15 $ Tall nmaster delta ratio
+     tiled   = mySpacing 10 $ Tall nmaster delta ratio
 
-     threecol = mySpacing 15 $ ThreeColMid nmaster delta (3/7)
+     mirrorTiled = reflectHoriz tiled
+
+     threecol = mySpacing 10 $ ThreeColMid nmaster delta (3/7)
 
      -- The default number of windows in the master pane
      nmaster = 1
@@ -281,9 +285,8 @@ myLogHook = return ()
 -- By default, do nothing.
 
 myStartupHook = do
-    spawn "nitrogen --restore &"
     spawnOnce "picom &"
-
+    spawn "XMONAD_NORESTART=1 autorandr --match-edid --change --force"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
@@ -291,9 +294,9 @@ myStartupHook = do
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-    xmproc <- spawnPipe "xmobar -x 0 /home/bvorhofer/.config/xmobar/xmobarrc_primary"
+    -- xmproc <- spawnPipe "xmobar -x 0 /home/bvorhofer/.config/xmobar/xmobarrc_primary"
     -- xmproc2 <- spawnPipe "xmobar -x 0 /home/bvorhofer/.config/xmobar/xmobarrc_dell"
-    -- spawn "/home/bvorhofer/.config/scripts/autobar.sh"
+    --spawn "/home/bvorhofer/.config/scripts/autobar.sh"
     xmonad $ ewmh $ docks defaults
 
 -- A structure containing your configuration settings, overriding

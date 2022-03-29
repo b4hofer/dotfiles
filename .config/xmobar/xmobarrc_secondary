@@ -1,16 +1,16 @@
 Config { 
 
    -- appearance
-     font =         "xft:JetBrains Mono:size=9:regular:antialias=true:hinting=true"
-   , additionalFonts = [ "xft:Font Awesome 5 Free Solid:size=10" ]
-   , bgColor =      "#2E3440"
+     font =         "xft:JetBrains Mono:size=10:regular:antialias=true:hinting=true"
+   , additionalFonts = [ "xft:FontAwesome:size=10" ]
+   , bgColor =      "#030504" -- G and B channels swapped due to bug with alpha enabled
    , fgColor =      "#E4E4E4"
--- Right now, position is determined by autobar script using command line parameter
+-- Right now, position is determined by autobar script using command line argument
 --   , position =     Top
---   , position = Static {xpos = 0, ypos = 0, width = 1920, height = 26 }
+--   , position = Static {xpos = 0, ypos = 0, width = 3440, height = 32 }
    , border =       NoBorder
    , borderColor =  "#646464"
-   -- , alpha =        0
+   , alpha =        220
 
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
@@ -42,6 +42,6 @@ Config {
    , commands = [
         -- time and date indicator 
         --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
-        Run Date           "<fc=#ECEFF4>  <fn=1></fn> %T  </fc>" "date" 10
+        Run Date           "<fc=#ECEFF4:0>  <fn=1></fn> %a %F %T  </fc>" "date" 10
         ]
    }
