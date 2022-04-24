@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Set higher DPI for laptop monitor (2 * 96)
+echo "Xft.dpi: 192" > .xresources.tmp
+xrdb -merge .xresources.tmp
+rm .xresources.tmp
+
+# Restart XMonad so DPI change affects xmobar
+if ! [ -v XMONAD_NORESTART ]
+then
+    xmonad --restart > /home/bernhard/restartlog.txt
+fi
+
+killall xmobar
+xmobar -p "Static {xpos = 0, ypos = 0, width = 3000, height = 52 }" /home/bernhard/.config/xmobar/xmobarrc_primary &

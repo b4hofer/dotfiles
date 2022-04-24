@@ -1,0 +1,21 @@
+#!/bin/bash
+DELL_DRM="card0-DP-5"
+
+# Set default DPI for Philips monitor
+echo "Xft.dpi: 96" > .xresources.tmp
+xrdb -merge .xresources.tmp
+rm .xresources.tmp
+
+# Try to enable Dell monitor
+#if [ -f "/sys/class/drm/$DELL_DRM/status" ]; then
+#    echo on | tee /sys/class/drm/$DELL_DRM/status
+#fi
+
+# Restart xmonad so DPI change affects xmobar
+if ! [ -v  XMONAD_NORESTART ]
+then
+    xmonad --restart > /home/bernhard/restartlog.txt
+fi
+
+killall xmobar
+xmobar -p "Static {xpos = 0, ypos = 0, width = 3440, height = 32 }" /home/bernhard/.config/xmobar/xmobarrc_primary &

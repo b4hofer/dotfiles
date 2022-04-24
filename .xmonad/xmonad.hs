@@ -253,6 +253,7 @@ myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
     , className =? "KeePassXC"      --> doCenterFloat
+    , className =? "Gnucash" <&&> title =? "Transaction Import Assistant" --> doCenterFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
@@ -295,9 +296,7 @@ myStartupHook = do
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-    -- xmproc <- spawnPipe "xmobar -x 1 /home/bernhard/.config/xmobar/xmobarrc_philips"
-    -- xmproc2 <- spawnPipe "xmobar -x 0 /home/bernhard/.config/xmobar/xmobarrc_dell"
-    spawn "/home/bernhard/.config/scripts/autobar.sh"
+    spawn "XMONAD_NORESTART=1 autorandr --change --match-edid --force"
     xmonad $ ewmh $ docks defaults
 
 -- A structure containing your configuration settings, overriding
