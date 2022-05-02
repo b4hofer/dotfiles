@@ -252,7 +252,6 @@ myLayout = avoidStruts $ (smartBorders tiled ||| smartBorders mirrorTiled ||| sm
 myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
-    , className =? "KeePassXC"      --> doCenterFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
@@ -286,6 +285,7 @@ myLogHook = return ()
 
 myStartupHook = do
     spawnOnce "picom &"
+    spawnOnce "dunst &"
     spawn "XMONAD_NORESTART=1 autorandr --match-edid --change --force"
 
 ------------------------------------------------------------------------
