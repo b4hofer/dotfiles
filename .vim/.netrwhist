@@ -1,4 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/var/lib/iwd'
+let g:netrw_dirhist_6='/etc/iwd'
+let g:netrw_dirhist_5='/etc/X11/xorg.conf.d'
+let g:netrw_dirhist_4='/home/bernhard/.config/autorandr/laptop'
+let g:netrw_dirhist_3='/home/bernhard/.config/autorandr'
 let g:netrw_dirhist_2='/home/bernhard/code/posty-laser-test/components/vl53l0x'
 let g:netrw_dirhist_1='/usr/share/X11/xorg.conf.d'
