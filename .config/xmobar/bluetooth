@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+
+# Get controller state
+c_state=$(bluetoothctl show | grep -e "^\s*Powered: yes")
+
+# Get number of connected devices
+n_devices=$(bluetoothctl info | grep -e "^Device" | wc -l)
+
+if [ -z c_state ]; then
+    echo "<fc=#BF616A:0><fn=2> OFF</fn></fc>"
+else
+    if [ "$n_devices" = "0" ]; then
+        echo "<fc=#A3BE8C:0><fn=2></fn></fc>"
+    elif [ "$n_devices" = "1" ]; then
+        # Get name of connected device
+        device=$(bluetoothctl info | grep -e "^\s*Name:" | cut -d : -f 2)
+        echo "<fc=#A3BE8C:0><fn=2></fn> $device</fc>"
+    else
+        echo "<fc=#A3BE8C:0><fn=2></fn> $n_devices</fc>"
+    fi
+fi
+

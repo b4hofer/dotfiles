@@ -2,7 +2,7 @@ Config {
 
    -- appearance
      font =         "xft:JetBrains Mono:size=10:regular:antialias=true:hinting=true"
-   , additionalFonts = [ "xft:Font Awesome 6 Free Solid:size=10" ]
+   , additionalFonts = [ "xft:Font Awesome 6 Free Solid:size=10", "xft:Font Awesome 6 Brands:size=10" ]
    , bgColor =      "#030504" -- G and B channels swapped due to bug with alpha enabled
    , fgColor =      "#E4E4E4"
 -- Right now, position is determined by autobar script using command line argument
@@ -15,7 +15,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "}{ %wlan0wi% %default:Master% %coretemp% %battery%%date%"
+   , template = "}{ %bluetooth% %wlan0wi% %default:Master% %coretemp% %battery%%date%"
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -79,5 +79,8 @@ Config {
         -- time and date indicator 
         --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
         , Run Date           "<fc=#ECEFF4:0>  <fn=1></fn> %a %F %T  </fc>" "date" 10
+
+        -- bluetooth status indicator (on/off connected/disconnected)
+        , Run Com "/home/bernhard/.config/xmobar/bluetooth" [] "bluetooth" 50
         ]
    }
