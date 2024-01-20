@@ -1,0 +1,8 @@
+profile home {
+  output "Japan Display Inc. 0x422A Unknown" disable
+  output "Philips Consumer Electronics Company PHL 346P1C AU02039008979" enable mode 3440x1440 position 0,0
+}
+
+profile laptop {
+  output "Japan Display Inc. 0x422A Unknown" enable mode 3000x2000 position 0,0
+}
