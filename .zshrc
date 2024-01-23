@@ -25,6 +25,7 @@ alias vim='nvim'
 alias ls='ls --color'
 alias grep='grep --color'
 alias config='/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME'
+alias sway='sway --unsupported-gpu'
 
 export EDITOR='vim'
 
