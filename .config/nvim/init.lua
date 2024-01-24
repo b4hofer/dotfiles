@@ -110,12 +110,12 @@ require('lazy').setup({
       'rafamadriz/friendly-snippets',
 
       -- WARR Rocketry snippets
-      {dir='~/source/warr/snippets'},
+      { dir = '~/source/warr/snippets' },
     },
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',  opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -213,7 +213,7 @@ require('lazy').setup({
       },
     },
     config = function()
-      require('telescope').setup{
+      require('telescope').setup {
         pickers = {
           find_files = {
             hidden = true,
@@ -376,7 +376,7 @@ local function live_grep_git_root()
   local git_root = find_git_root()
   if git_root then
     require('telescope.builtin').live_grep({
-      search_dirs = {git_root},
+      search_dirs = { git_root },
     })
   end
 end
@@ -581,6 +581,17 @@ mason_lspconfig.setup_handlers {
       on_attach = on_attach,
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
+    }
+  end,
+
+  ["clangd"] = function()
+    require('lspconfig').clangd.setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      cmd = {
+        "clangd",
+        "--query-driver=/**/arm-none-eabi-gcc"
+      },
     }
   end,
 }
