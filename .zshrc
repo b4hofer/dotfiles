@@ -30,3 +30,5 @@ alias sway='sway --unsupported-gpu'
 export EDITOR='vim'
 
 #eval "$(starship init zsh)"
+export PATH=/home/bvor/.nimble/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
+export PATH=/home/bvor/.nimble/bin:/home/bvor/.nimble/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
