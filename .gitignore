@@ -1,2 +1,21 @@
-.config/nvim/lazy-lock.json
-.cfg
+# Ignore everything by default
+/*
+
+# Except these
+
+# Allow going into .config
+!.config/
+# But ignore everything inside by default...
+.config/*
+
+# ...except these
+!.config/fish/
+!.config/hypr/
+!.config/kitty/
+!.config/nvim/
+!.config/tmux/
+!.config/waybar/
+!.config/wofi/
+!Pictures/wallpapers/
+!README.md
+
