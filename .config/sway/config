@@ -252,6 +252,10 @@ bar swaybar_command waybar
 
 for_window [title="Write: .*" app_id="thunderbird"] floating enable
 
+# Zoom
+# For pop up notification windows that don't use notifications api
+for_window [shell="xwayland" title="^zoom$"] border none, floating enable
+
 exec_always "pkill gammastep; gammastep -l 48.14:11.62"
 exec_always "pkill kanshi; kanshi > /home/bvor/.logs/kanshi.log 2>&1"
 exec "nextcloud --background"
