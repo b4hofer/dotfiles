@@ -14,6 +14,7 @@
 !.config/kitty/
 !.config/nvim/
 !.config/tmux/
+!.config/tmux/plugins/catppuccin
 !.config/waybar/
 !.config/wofi/
 !Pictures/wallpapers/
