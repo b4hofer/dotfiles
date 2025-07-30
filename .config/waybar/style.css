@@ -1,0 +1,54 @@
+@import "macchiato.css";
+
+* {
+  font-family: Ubuntu Nerd Font, FiraCode Nerd Font;
+  font-size: 15px;
+  min-height: 0;
+}
+
+.module {
+	text-shadow: 1px 1px 5px black;
+	background:transparent;
+	border-radius: 0;
+}
+
+.modules-right {
+  padding-right: 1rem;
+}
+
+.modules-right .module {
+  padding-left: 0.5rem;
+}
+
+window#waybar {
+  background: transparent;
+  color: @text;
+}
+
+#workspaces {
+  margin-left: 1rem;
+}
+
+#workspaces button {
+  border: 0px;
+}
+
+#workspaces button.active {
+  color: @green;
+}
+
+#workspaces button:hover {
+  color: @sapphire;
+  background:transparent;
+  box-shadow: inherit;
+  text-shadow: inherit;
+}
+
+#battery.charging {
+  color: @green;
+}
+
+#battery.warning:not(.charging) {
+  color: @red;
+}
+
