@@ -21,8 +21,12 @@
 }
 
 window#waybar {
-  background: transparent;
+  background-color: rgba(1, 1, 1, 0.4);
   color: @text;
+}
+
+window#waybar>box {
+	padding: 2px;
 }
 
 #workspaces {
