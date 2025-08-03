@@ -3,3 +3,4 @@ if status is-interactive
 end
 
 set fish_greeting
+fish_add_path /home/bvor/.cargo/bin
