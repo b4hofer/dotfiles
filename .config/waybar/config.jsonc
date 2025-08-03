@@ -45,7 +45,7 @@
 	"interval": 5
     },
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
+        "scroll-step": 5, // %, can be a float
         "format": "{icon} {volume}%",
         "format-muted": "",
         "format-icons": {
